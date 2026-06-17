@@ -48,6 +48,7 @@ export interface Product {
 export interface RecommendationResult {
   recommendedSize: string;
   sizeRange: [number, number];
+  sizeRangeUnit: 'cm' | 'mm';
   brand: string;
   confidence: 'perfect' | 'good' | 'borderline';
   alternativeSizes?: string[];

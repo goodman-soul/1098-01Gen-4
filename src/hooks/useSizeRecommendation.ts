@@ -73,6 +73,7 @@ export function useHelmetRecommendation(headCircumference: number): Recommendati
         results.push({
           recommendedSize: fit.size.size,
           sizeRange: fit.size.headCircumference,
+          sizeRangeUnit: 'cm',
           brand,
           confidence: fit.confidence,
           alternativeSizes: alternatives,
@@ -149,6 +150,7 @@ export function usePantsRecommendation(
         results.push({
           recommendedSize: size.size,
           sizeRange: size.waist,
+          sizeRangeUnit: 'cm',
           brand: '标准尺码',
           confidence,
           tips,
@@ -205,6 +207,7 @@ export function useShoesRecommendation(
         results.push({
           recommendedSize: size.size,
           sizeRange: size.footLength,
+          sizeRangeUnit: 'mm',
           brand: '标准欧码',
           confidence,
           tips,
@@ -255,6 +258,7 @@ export function useGlovesRecommendation(
         results.push({
           recommendedSize: size.size,
           sizeRange: size.handCircumference,
+          sizeRangeUnit: 'cm',
           brand: '标准尺码',
           confidence,
           tips,

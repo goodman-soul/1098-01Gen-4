@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Check, Wind, Scale, Calendar } from 'lucide-react';
 import { Product } from '../types';
@@ -13,6 +14,7 @@ export function ProductCard({ product, recommendedSize }: ProductCardProps) {
   const { addProduct, removeProduct, isSelected, maxProducts, products } = useCompareStore();
   const selected = isSelected(product.id);
   const isFull = products.length >= maxProducts;
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleToggle = () => {
     if (selected) {
@@ -33,10 +35,20 @@ export function ProductCard({ product, recommendedSize }: ProductCardProps) {
       }`}
     >
       <div className="relative aspect-square overflow-hidden bg-dark-700">
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-dark-600 to-dark-700 animate-pulse">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-dark-500/50" />
+            </div>
+          </div>
+        )}
         <motion.img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover transition-opacity duration-300 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setImageLoaded(true)}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         />

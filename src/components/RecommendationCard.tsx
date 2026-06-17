@@ -66,7 +66,7 @@ export function RecommendationCard({ result, delay = 0 }: RecommendationCardProp
       <div className="mb-4">
         <p className="text-sm text-dark-400">适合范围</p>
         <p className="text-lg font-semibold text-dark-100">
-          {result.sizeRange[0]} - {result.sizeRange[1]} cm
+          {result.sizeRange[0]} - {result.sizeRange[1]} {result.sizeRangeUnit}
         </p>
       </div>
 
